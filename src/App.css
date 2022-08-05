@@ -1,14 +1,14 @@
-.scrollbar-track{
+/* .scrollbar-track{
     background-color: transparent !important;
   }
   
   .scrollbar-track-y{
     width:12px !important;
   }
-  
+   */
   
   .scrollbar-thumb{
-    width:12px !important;
-    background-color: gray !important;
-    border-radius: 0 !important;
+    width:5px !important;
+    background-color: teal !important;
+    border-radius: 5 !important;
   }

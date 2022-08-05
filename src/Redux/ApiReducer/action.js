@@ -1,4 +1,4 @@
-import { GET_API_FAILURE, GET_API_REQUEST, GET_API_SUCCESS } from "./actionType"
+import { GET_API_FAILURE, GET_API_REQUEST, GET_API_SUCCESS, POST_CART_FAILURE, POST_CART_REQUEST, POST_CART_SUCCESS } from "./actionType"
 import axios from "axios";
 
 export const apiRequest = () => {
@@ -19,6 +19,7 @@ export const apiFailure = () => {
         type:GET_API_FAILURE
     }
 }
+
 
 export  const getData = () => (dispatch) => {
     dispatch(apiRequest());
