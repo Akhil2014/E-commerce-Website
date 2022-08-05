@@ -1,4 +1,4 @@
-import { POST_CART_SUCCESS } from "./actionType"
+import { DELETE_ALL, POST_CART_SUCCESS, POST_SUCCESS } from "./actionType"
 
 const initCart = {
     cart:[]
@@ -10,6 +10,18 @@ export const CartReducer = (state = initCart , {type, payload}) => {
             return{
                 ...state,
                 cart:[...state.cart,payload]
+            }
+        }
+        case POST_SUCCESS:{
+            return{
+                ...state,
+                cart:[payload]
+            }
+        }
+        case DELETE_ALL: {
+            return{
+                ...state,
+                cart:[]
             }
         }
         default: 

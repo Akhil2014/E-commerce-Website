@@ -1,4 +1,4 @@
-import { POST_CART_FAILURE, POST_CART_REQUEST, POST_CART_SUCCESS } from "./actionType"
+import { DELETE_ALL, POST_CART_FAILURE, POST_CART_REQUEST, POST_CART_SUCCESS, POST_SUCCESS } from "./actionType"
 
 export const cartRequest = () => {
     return {
@@ -14,5 +14,17 @@ export const cartSuccess = (payload) => {
 export const cartFailure = () => {
     return {
         type:POST_CART_FAILURE,
+    }
+}
+export const cartArrayPost = (payload) => {
+    return {
+        type:POST_SUCCESS,
+        payload,
+    }
+}
+
+export const deleteCart = () => {
+    return{
+        type:DELETE_ALL
     }
 }

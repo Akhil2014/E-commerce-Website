@@ -9,22 +9,40 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getData } from "../Redux/ApiReducer/action";
 import { Badge, Grid, Image, Skeleton,Stack } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
+import { useToast } from '@chakra-ui/react'
+import { cartSuccess } from "../Redux/CartReducer/action";
 
 const SinglePage = () => {
   const { id } = useParams();
   const [data, setData] = useState({});
   const dispatch = useDispatch();
-  const products = useSelector((s) => s.products);
+  const cart = useSelector((s) => s.CartReducer.cart);
+  const products = useSelector((s) => s.ApiReducer.products);
+  const toast = useToast()
+  const handleCart = (item) => {
+    if (cart.includes(item)) {
+      alert("Product is already present in the cart");
+    } else {
+      dispatch(cartSuccess(item));
+      toast({
+        title: 'Product added in cart.',
+        description: "Thanx for choosing this product",
+        status: 'success',
+        duration: 2000,
+        isClosable: true,
+      })
+    }
+  };
   useEffect(() => {
     if (products.length === 0) {
       dispatch(getData());
     }
-  });
+  },[]);
   useEffect(() => {
-    if (products.length >= id) {
+    // if (products.length >= id) {
       const currProduct = products[id - 1];
       currProduct && setData(currProduct);
-    }
+    // }
   }, [products, id]);
   return (
     <>
@@ -89,7 +107,7 @@ const SinglePage = () => {
               <br />
               <Text> $ {data.price}</Text>
               <br/>
-              <Button colorScheme="messenger">Add to Cart</Button>
+              <Button colorScheme="messenger" onClick={()=> handleCart(data)}>Add to Cart</Button>
       </Container>
     </HStack>
     </>

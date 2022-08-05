@@ -28,7 +28,7 @@ const Card = ({ property }) => {
   const toast = useToast()
   const handleCart = (item) => {
     if (cart.includes(item)) {
-      alert("Product is also present in cart");
+      alert("Product is already present in the cart");
     } else {
       dispatch(cartSuccess(item));
       toast({

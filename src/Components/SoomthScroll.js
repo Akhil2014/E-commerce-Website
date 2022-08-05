@@ -7,9 +7,7 @@ import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll';
 
   const overscrollOptions = {
     enable: true,
-    effect: 'bounce',
-    damping: 0.15,
-    maxOverscroll: 70,
+    maxOverscroll: 0,
     glowColor: '#fff',
   };
 
@@ -23,7 +21,6 @@ import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll';
 
   
 const options = {
-    damping : 0.07,
     plugins: {
       overscroll: { ...overscrollOptions },
     },
