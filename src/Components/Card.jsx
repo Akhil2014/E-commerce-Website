@@ -98,7 +98,7 @@ const Card = ({ property }) => {
             </Box>
           </Box>
         </Box>
-        <HStack>
+        <HStack justifyContent="space-evenly">
           <Link to={`single/${property.id}`}>
             <Button leftIcon={<ViewIcon />} colorScheme="teal" variant="solid">
               More Details

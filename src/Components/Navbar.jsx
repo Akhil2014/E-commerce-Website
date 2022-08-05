@@ -1,7 +1,9 @@
-import React  from "react";
-import { Flex, Heading, Stack, Text, Button, Spacer } from "@chakra-ui/react";
+import React from "react";
+import { Flex, Heading, Stack, Text, Button,Box } from "@chakra-ui/react";
 import { SiCampaignmonitor } from "react-icons/si";
-import { Navigate, NavLink } from "react-router-dom";
+import {NavLink } from "react-router-dom";
+import { BsCartCheck } from "react-icons/bs";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   let activeStyle = {
@@ -10,6 +12,7 @@ const Navbar = () => {
   let nonActiveStyle = {
     color: "gray",
   };
+  const cart  = useSelector((s) => s.CartReducer.cart)
   return (
     <Flex
       position=""
@@ -19,7 +22,7 @@ const Navbar = () => {
       justifyContent="space-evenly"
     >
       <NavLink to="/">
-        <Stack pt="26px"  direction="row" w="220px">
+        <Stack pt="26px" direction="row" w="220px">
           <SiCampaignmonitor size="24px" color="#7856ff" /> /
           <Heading
             _hover={{ cursor: "pointer" }}
@@ -40,32 +43,43 @@ const Navbar = () => {
         w="600px"
         color="gray.400"
       >
-        <NavLink to="/products" style={({ isActive }) => (isActive ? activeStyle : nonActiveStyle)}>
-          <Text _hover={{ color: "#51cfdb", cursor: "pointer" }} fontSize={["sm","md","lg","xl"]}>
+        <NavLink
+          to="/products"
+          style={({ isActive }) => (isActive ? activeStyle : nonActiveStyle)}
+        >
+          <Text
+            _hover={{ color: "#51cfdb", cursor: "pointer" }}
+            fontSize={["sm", "md", "lg", "xl"]}
+          >
             Products
           </Text>
         </NavLink>
       </Stack>
       <Stack color="gray.400" pt="18px" direction="row" spacing={6} w="300px">
-        <NavLink to="/cart" style={({ isActive }) => (isActive ? activeStyle : nonActiveStyle)}>
+        <NavLink
+          to="/cart"
+          style={({ isActive }) => (isActive ? activeStyle : nonActiveStyle)}
+        >
           <Text
-           display={["none","none","block","flex"]}
+            display={["none", "none", "block", "flex"]}
             _hover={{ color: "#51cfdb", cursor: "pointer" }}
             pt="5px"
             fontSize="xl"
           >
-           Cart
+            <Flex>
+               <BsCartCheck size="20px" /><Text color={cart.length!==0?"teal":"aliceblue"} as="span">{cart.length}</Text>
+            </Flex>
           </Text>
         </NavLink>
         <Button
-          display={["none","none","block","flex"]}
+          display={["none", "none", "block", "flex"]}
           _active="none"
           _hover="none"
           mt="20px"
           bg="#51cfdb"
           color="black"
         >
-            Login
+          Login
         </Button>
       </Stack>
     </Flex>

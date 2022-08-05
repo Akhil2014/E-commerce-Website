@@ -1,11 +1,9 @@
 import React from "react";
 import { useEffect } from "react";
 import {
-  Badge,
   Box,
   Grid,
   Heading,
-  Image,
   Skeleton,
   SkeletonCircle,
   SkeletonText,
@@ -13,7 +11,6 @@ import {
 } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../Redux/ApiReducer/action";
-import { Link } from "react-router-dom";
 import Card from "./Card";
 
 const Data = () => {
@@ -52,7 +49,7 @@ const Data = () => {
           <Box textAlign="center">
             <Heading color="red.400">SOMETHING WRONG!</Heading>
           </Box>
-          <Grid templateColumns="repeat(5, 1fr)" gap={8}>
+          <Grid templateColumns={["repeat(1, 1fr)","repeat(3, 1fr)","repeat(4, 1fr)","repeat(5, 1fr)"]} gap={8}>
             {array.map((i) => {
               return (
                 <Box padding="6" boxShadow="lg" bg="dark">
@@ -64,7 +61,7 @@ const Data = () => {
           </Grid>
         </>
       )}
-      <Grid templateColumns="repeat(5, 1fr)" gap={6}>
+      <Grid templateColumns={["repeat(1, 1fr)","repeat(2, 1fr)","repeat(3, 1fr)","repeat(4, 1fr)","repeat(5, 1fr)"]} gap={6}>
         {products.length > 0 &&
           products.map((property) => {
             return <Card key={property.id} property={property} />;

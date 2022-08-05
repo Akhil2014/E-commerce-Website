@@ -15,7 +15,7 @@ export const CartReducer = (state = initCart , {type, payload}) => {
         case POST_SUCCESS:{
             return{
                 ...state,
-                cart:[payload]
+                cart:payload
             }
         }
         case DELETE_ALL: {
