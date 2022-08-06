@@ -1,7 +1,7 @@
 import React from "react";
-import { Flex, Heading, Stack, Text, Button,Box } from "@chakra-ui/react";
+import { Flex, Heading, Stack, Text, Button, Box } from "@chakra-ui/react";
 import { SiCampaignmonitor } from "react-icons/si";
-import {NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { BsCartCheck } from "react-icons/bs";
 import { useSelector } from "react-redux";
 
@@ -12,7 +12,7 @@ const Navbar = () => {
   let nonActiveStyle = {
     color: "gray",
   };
-  const cart  = useSelector((s) => s.CartReducer.cart)
+  const cart = useSelector((s) => s.CartReducer.cart);
   return (
     <Flex
       position=""
@@ -67,20 +67,24 @@ const Navbar = () => {
             fontSize="xl"
           >
             <Flex>
-               <BsCartCheck size="20px" /><Text color={cart.length!==0?"teal":"aliceblue"} as="span">{cart.length}</Text>
+              <BsCartCheck  size="20px" />
+              <Text color={cart.length !== 0 ? "teal" : "aliceblue"} as="span">
+                {cart.length}
+              </Text>
             </Flex>
           </Text>
         </NavLink>
-        <Button
-          display={["none", "none", "block", "flex"]}
-          _active="none"
-          _hover="none"
-          mt="20px"
-          bg="#51cfdb"
-          color="black"
-        >
-          Login
-        </Button>
+        <Link to="/login">
+          <Button
+            display={["none", "none", "block", "flex"]}
+            _active="none"
+            _hover="none"
+            bg="#51cfdb"
+            color="black"
+          >
+            Login
+          </Button>
+        </Link>
       </Stack>
     </Flex>
   );

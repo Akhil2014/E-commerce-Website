@@ -16,28 +16,33 @@ import {
   StarIcon,
   ViewIcon,
 } from "@chakra-ui/icons";
-import { BsCartCheckFill, IconName } from "react-icons/bs";
+import { BsCartCheckFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { cartSuccess } from "../Redux/CartReducer/action";
-import { useToast } from '@chakra-ui/react'
+import { useToast } from "@chakra-ui/react";
 
 const Card = ({ property }) => {
   const dispatch = useDispatch();
   const cart = useSelector((s) => s.CartReducer.cart);
-  const toast = useToast()
+  const toast = useToast();
+  const isAuth = useSelector((s) => s.AuthReducer.isAuth);
   const handleCart = (item) => {
-    if (cart.includes(item)) {
-      alert("Product is already present in the cart");
+    if (!isAuth) {
+      alert(" Please! Login our website");
     } else {
-      dispatch(cartSuccess(item));
-      toast({
-        title: 'Product added in cart.',
-        description: "Thanx for choosing this product",
-        status: 'success',
-        duration: 2000,
-        isClosable: true,
-      })
+      if (cart.includes(item)) {
+        alert("Product is already present in the cart");
+      } else {
+        dispatch(cartSuccess(item));
+        toast({
+          title: "Product added in cart.",
+          description: "Thanx for choosing this product",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+        });
+      }
     }
   };
   return (
