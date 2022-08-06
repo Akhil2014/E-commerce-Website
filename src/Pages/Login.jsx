@@ -143,7 +143,7 @@ const Login = () => {
                 colorScheme="teal"
                 width="full"
               >
-                {isAuth === true ? "Logout" : "Login"}
+                Login
               </Button>
             </Stack>
           </form>

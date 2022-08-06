@@ -13,6 +13,7 @@ const Navbar = () => {
     color: "gray",
   };
   const cart = useSelector((s) => s.CartReducer.cart);
+  const isAuth = useSelector((s) => s.AuthReducer.isAuth)
   return (
     <Flex
       position=""
@@ -82,7 +83,7 @@ const Navbar = () => {
             bg="#51cfdb"
             color="black"
           >
-            Login
+          {isAuth === true ? "Logout" : "Login"}
           </Button>
         </Link>
       </Stack>
