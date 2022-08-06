@@ -39,11 +39,11 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { isAuth, isLoading } = useSelector((s) => s.AuthReducer);
-  const navigate  = useNavigate();
+  const navigate = useNavigate();
   const location = useLocation();
   const comingFrom = location.state?.from?.pathname || "/products";
-  if(isAuth){
-    return  <Navigate to={comingFrom} replace />
+  if (isAuth) {
+    return <Navigate to={comingFrom} replace />;
   }
   const handleToast = () => {
     toast({
@@ -76,7 +76,6 @@ const Login = () => {
     setPassword("");
   };
 
-  
   return (
     <Flex
       flexDirection="column"
@@ -144,7 +143,7 @@ const Login = () => {
                 colorScheme="teal"
                 width="full"
               >
-                Login
+                {isAuth === true ? "Logout" : "Login"}
               </Button>
             </Stack>
           </form>
